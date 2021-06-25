@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons :: head"></head>
+
+<body>
+    <header th:replace="fragments/commons :: navigation"></header>
+
+
+    <div class="containertop" >
+        <h2 class="text-center zaglavie" th:text="'Всички анализи за писмо номер - ' + ${PismoDen.numberPismo} + ' с дата писмо '+${PismoDen.pismoDate} +' и дата анализ '+ ${PismoDen.analizDate}" >Всички анализа за писмо + </h2>
+
+
+        <div class=" row d-flex justify-content-center">
+
+            <div class="col-xs-2 m-1 text-center" >
+                <label for="ex1" class="h5 mb-2">Номер анализ</label>
+                <input id="ex1" name="dataName" onkeyup="myFunction()" />
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="main" style="overflow:auto;">
+
+        <!--    todo spacer-->
+        <!-- Authors -->
+        <table  id="example"  >
+            <thead >
+            <tr>
+                <th>Номер</th>
+                <th>Анализ</th>
+                <th>Тип</th>
+                <th>Ph</th>
+                <th>Cu mg/l</th>
+                <th>Mn mg/l</th>
+                <th>Fe mg/l</th>
+                <th>SO4 mg/l</th>
+                <th>Ca mg/l</th>
+                <th>Статус</th>
+<!--                <th sec:authorize="hasRole('ADMIN')" >del btn</th>-->
+            </tr>
+            </thead>
+
+            <tbody class="authors-container">
+            <tr th:each="p, stat : ${allAnalizByChosenId}" th:object="${p}"  >
+                <td scope="row" th:text="${stat.index + 1 }">1</td>
+                <td th:text="*{numberAnaliz}" >Дата писмо</td>
+                <td th:text="*{analizType}" >Дата анализ</td>
+                <td th:text="*{ph}" >Дата анализ</td>
+                <td th:text="*{cu}" >Дата анализ</td>
+                <td th:text="*{mn}" >Дата анализ</td>
+                <td th:text="*{fe}" >Дата анализ</td>
+                <td th:text="*{so4}" >Дата анализ</td>
+                <td th:text="*{ca}" >Дата анализ</td>
+                <td th:text="*{isDeleted()} ? 'изтрит' : 'активен'" > status</td>
+
+<!--                <td>-->
+<!--                    &lt;!&ndash;  <form th:action="@{/cart/addTo/{id}/(id=*{id})}" th:method="POST">  &ndash;&gt;-->
+<!--                    <form  th:action="@{/den/allAnalizByPismo/{id}/(id = ${p.id} )}" th:method="Get">-->
+<!--                        <input type="submit" value="Виж анализи" class="btn btn-danger" >-->
+<!--                    </form>-->
+<!--                </td>-->
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+
+    </div>
+
+    <div class="container-original">
+        <h2 class="text-center zaglavie">Add new PET</h2>
+        <div class="spacer"></div>
+        <form method="POST"
+              th:action="@{/den/addNewAnalizToPismoDenWithId/{id}/(id=${PismoDenid})}"
+              th:object="${analizDenBindingModel}"
+              class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center"  enctype="multipart/form-data">
+            <div class="row">
+                <div class="form-group col mb-3">
+                    <label for="numberAnaliz"
+                           class="text-white font-weight-bold">Номер анализ</label>
+                    <input  name="numberAnaliz"
+                            th:value="*{numberAnaliz}"
+                            th:errorclass="is-invalid"
+                            required
+                            type="text"
+                            id="numberAnaliz"
+                            class="form-control"
+                            placeholder="Номер анализ"/>
+                    <small id="numberAnalizError" th:if="${#fields.hasErrors('numberAnaliz')}" th:errors="*{numberAnaliz}"
+                           class="invalid-feedback text-light form-text bg-danger rounded"  >Category name must be between 3 and 60 characters</small>
+                </div>
+                <div class="form-group col mb-3">
+                    <label for="analizType"
+                           class="text-white font-weight-bold">Тип анализ</label>
+                    <input  name="analizType"
+                            th:value="*{analizType}"
+                            th:errorclass="is-invalid"
+                            required
+                            type="text"
+                            id="analizType"
+                            class="form-control"
+                            placeholder="Тип анализ"/>
+                    <small id="analizTypeError" th:if="${#fields.hasErrors('analizType')}" th:errors="*{analizType}"
+                           class="invalid-feedback text-light form-text bg-danger rounded"  >Category name must be between 3 and 60 characters</small>
+                </div>
+                <div class="form-group col mb-3">
+                    <label for="ph"
+                           class="text-white font-weight-bold">Въведи Ph </label>
+                    <input  name="ph"
+                            th:value="*{ph}"
+                            th:errorclass="is-invalid"
+                            required min="0"
+                            type="number"
+                            id="ph"
+                            class="form-control"
+                            placeholder="Ph"/>
+                    <small id="phError" th:if="${#fields.hasErrors('ph')}" th:errors="*{ph}"
+                           class="invalid-feedback text-light form-text bg-danger rounded"  >Category</small>
+                </div>
+                <div class="form-group col mb-3">
+                    <label for="cu"
+                           class="text-white font-weight-bold">Въведи Cu </label>
+                    <input  name="cu"
+                            th:value="*{cu}"
+                            th:errorclass="is-invalid"
+                            required min="0"
+                            type="number"
+                            id="cu"
+                            class="form-control"
+                            placeholder="Cu"/>
+                    <small id="cuError" th:if="${#fields.hasErrors('cu')}" th:errors="*{cu}"
+                           class="invalid-feedback text-light form-text bg-danger rounded"  >Category</small>
+                </div>
+                <div class="form-group col mb-3">
+                    <label for="mn"
+                           class="text-white font-weight-bold">Въведи Mn </label>
+                    <input  name="mn"
+                            th:value="*{mn}"
+                            th:errorclass="is-invalid"
+                            required min="0"
+                            type="number"
+                            id="mn"
+                            class="form-control"
+                            placeholder="Mn"/>
+                    <small id="mnError" th:if="${#fields.hasErrors('mn')}" th:errors="*{mn}"
+                           class="invalid-feedback text-light form-text bg-danger rounded"  >Category</small>
+                </div>
+                <div class="form-group col mb-3">
+                    <label for="fe"
+                           class="text-white font-weight-bold">Въведи Fe </label>
+                    <input  name="fe"
+                            th:value="*{fe}"
+                            th:errorclass="is-invalid"
+                            required min="0"
+                            type="number"
+                            id="fe"
+                            class="form-control"
+                            placeholder="Fe"/>
+                    <small id="feError" th:if="${#fields.hasErrors('fe')}" th:errors="*{fe}"
+                           class="invalid-feedback text-light form-text bg-danger rounded"  >Category</small>
+                </div>
+                <div class="form-group col mb-3">
+                    <label for="so4"
+                           class="text-white font-weight-bold">Въведи SO4 </label>
+                    <input  name="so4"
+                            th:value="*{so4}"
+                            th:errorclass="is-invalid"
+                            required min="0"
+                            type="number"
+                            id="so4"
+                            class="form-control"
+                            placeholder="Mn"/>
+                    <small id="so4Error" th:if="${#fields.hasErrors('so4')}" th:errors="*{so4}"
+                           class="invalid-feedback text-light form-text bg-danger rounded"  >Category</small>
+                </div>
+                <div class="form-group col mb-3">
+                    <label for="ca"
+                           class="text-white font-weight-bold">Въведи Ca </label>
+                    <input  name="ca"
+                            th:value="*{ca}"
+                            th:errorclass="is-invalid"
+                            required min="0"
+                            type="number"
+                            id="ca"
+                            class="form-control"
+                            placeholder="Ca"/>
+                    <small id="caError" th:if="${#fields.hasErrors('ca')}" th:errors="*{ca}"
+                           class="invalid-feedback text-light form-text bg-danger rounded"  >Category</small>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col mb-3">
+                    <label for="analizText"
+                           class="text-white font-weight-bold">Въведи Забележка</label>
+                    <input  name="analizText"
+                            th:value="*{analizText}"
+                            th:errorclass="is-invalid"
+                            type="text"
+                            id="analizText"
+                            class="form-control"
+                            placeholder="Забележка"/>
+                    <small id="analizTextError" th:if="${#fields.hasErrors('analizText')}" th:errors="*{analizText}"
+                           class="invalid-feedback text-light form-text bg-danger rounded"  >Categorys</small>
+                </div>
+            </div>
+
+
+
+
+            <div class="row text-center">
+                <div class="col ">
+                    <div class="button-holder d-flex justify-content-center">
+                        <input type="submit" class="btn btn-info btn-lg" value="Запиши анализ"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function myFunction() {
+            // Declare variables
+
+            var table, tr, i, input1, input2,input7, filter1, filter2, filter7, td1, td2, td7, txtValue1, txtValue2, txtValue7;
+            // var genderFilter = document.getElementById("genders").value;
+            input1 = document.getElementById("ex1");
+
+            filter1 = input1.value.toUpperCase();
+
+            table = document.getElementById("example");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td1 = tr[i].getElementsByTagName("td")[3];
+
+                if (td1) {
+                    txtValue1 = td1.textContent || td1.innerText;
+
+                    if ((txtValue1.toUpperCase().indexOf(filter1) > -1)   ){
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+
+        }
+    </script>
+
+
+</body>
+</html>

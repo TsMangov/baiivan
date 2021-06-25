@@ -36,7 +36,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                     antMatchers("/", "/users/login", "/css/**", "/users/register").permitAll().
             // protect all other pages
             antMatchers("/**").authenticated().
-
+            antMatchers("/users/register").hasAnyRole("ADMIN").
             and().
           // configure login with HTML form
           formLogin().
@@ -47,7 +47,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
             // the name of the user password input field in OUR login form is password (optional)
             passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
             // on login success redirect here
-            defaultSuccessUrl("/product/all").
+            defaultSuccessUrl("/den/allPisma").
             // on login failure redirect here
             failureForwardUrl("/users/login-error").
         and().

@@ -11,8 +11,8 @@ table{
     border-radius: 4px;
 }
 table th{
-    background-color: #9D8D8f;
-    color:  #46344E;
+    background-color: darkgray;
+    color:  black;
     text-decoration: underline;
     text-align: center;
     font-weight: bold;
@@ -26,8 +26,8 @@ table tbody td{
 }
 
 table tbody tr {
-    background-color: #F2C4CE;
-    color: #46344E;
+    background-color: white;
+    color: black;
     font-weight: bold;
     font-size: 19px;
 }
@@ -112,7 +112,7 @@ form button{
 
 .containertop {
 
-    background-color: #89CFF0;
+    background-color: lightgray;
     position: fixed;
     top: 76px;
     left: 0;
@@ -123,7 +123,7 @@ form button{
 
 .container-cart {
     position: fixed;
-    background-color: #89CFF0;
+    background-color: lightgray;
     padding-top: 65px;
     padding-bottom: 10px;
     width: 100%;
@@ -136,7 +136,7 @@ form button{
 
 
 .main {
-    background-color: #89CFF0;
+    background-color: lightgray;
     color: #D6D6D6;
     padding: 235px 10px 0 10px;
     z-index: 2;
@@ -149,11 +149,11 @@ form button{
     border: none;
     outline: none;
     padding: 10px 16px;
-    color: #46344E;
-    background: rgb(238,174,202);
+    color: black;
+    background: white;
     /*background: linear-gradient(211deg, rgba(137,207,240,1) 0%, rgba(242,196,206,1) 50%, rgba(137,207,240,1) 100%);*/
-    background: radial-gradient(circle, rgba(238,174,202,1) 25%, rgba(148,187,233,1) 100%); cursor: pointer;
-    border: 1px solid #46344E;
+    /*background: radial-gradient(circle, rgba(238,174,202,1) 25%, rgba(148,187,233,1) 100%); cursor: pointer;*/
+    border: 1px solid black;
     line-height: 1;
 }
 
@@ -161,7 +161,8 @@ form button{
 .active, .btn:hover {
     background-color: #46344E;
     background: #46344E;
-    color: #FAED26;
+    color: white;
+    border: 1px solid white;
 }
 
 

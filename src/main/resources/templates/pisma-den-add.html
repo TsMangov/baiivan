@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons :: head"></head>
+
+<body>
+
+<header th:replace="fragments/commons :: navigation"></header>
+
+<div class="spacer"></div>
+<div class="container-original">
+    <h2 class="text-center zaglavie">Add new PET</h2>
+    <div class="spacer"></div>
+    <form method="POST"
+          th:action="@{/den/addPisma}"
+          th:object="${pismoDenBindingModel}"
+          class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center"  enctype="multipart/form-data">
+          <div class="row">
+                <div class="form-group col mb-3">
+                    <label for="numberPismo"
+                           class="text-white font-weight-bold">Въведете номер на писмо</label>
+                    <input name="numberPismo"
+                           th:value="*{numberPismo}"
+                           th:errorclass="is-invalid"
+                           type="text"
+                           id="numberPismo"
+                           class="form-control" placeholder="Номер писмо" >
+                    <small id="numberPismoError" th:if="${#fields.hasErrors('numberPismo')}"  th:errors="*{numberPismo}"
+                           class="invalid-feedback text-light form-text bg-danger rounded">Must be valid 22</small>
+                </div>
+          </div>
+
+        <div class="row">
+            <div class="form-group col mb-3">
+                <label for="pismoDate"
+                       class="text-white font-weight-bold">Изберете дата на писмо</label>
+                <input th:value="*{pismoDate}"
+                       th:errorclass="is-invalid"
+                       type="date"
+                       placeholder="dd-mm-yyyy"
+                       class="form-control"
+                       id="pismoDate"
+                       name="pismoDate"/>
+                <small id="pismoDateError" th:if="${#fields.hasErrors('pismoDate')}" th:errors="*{pismoDate}"
+                       class="invalid-feedback text-light form-text bg-danger rounded"  >Category</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col mb-3">
+                <label for="analizDate"
+                       class="text-white font-weight-bold">Изберете дата на анализ</label>
+                <input th:value="*{analizDate}"
+                       th:errorclass="is-invalid"
+                       type="date"
+                       class="form-control"
+                       id="analizDate"
+                       name="analizDate"/>
+                <small id="analizDateError" th:if="${#fields.hasErrors('analizDate')}" th:errors="*{analizDate}"
+                       class="invalid-feedback text-light form-text bg-danger rounded"  >Category</small>
+            </div>
+        </div>
+
+        <div class="row text-center">
+            <div class="col ">
+                <div class="button-holder d-flex justify-content-center">
+                    <input type="submit" class="btn btn-info btn-lg" value="Запиши Писмо"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    <footer th:replace="fragments/commons :: footer"></footer>
+</div>
+
+</body>
+</html>

@@ -118,7 +118,7 @@
             <div class="form-group col mb-3"  >
 
                 <div id="role" name="role" style="display: inline-block; padding-left: 25px; "
-                     th:each="g : ${T(bigproject.demo.model.entities.enums.UserRole).values()}" >
+                     th:each="g : ${T(deploy.deploytest.model.entities.enums.UserRole).values()}" >
                     <input type="checkbox" name="role" style="width: 15px; height: 15px; " th:value="${g.name()}"/>
                     <label th:text="${g.name()}"></label>
                 </div>

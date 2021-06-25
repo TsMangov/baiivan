@@ -9,25 +9,25 @@ navbar-toggler-icon {
 
 body {
     /*background-image: url(/images/background.jpg);*/
-    background: linear-gradient(rgba(0, 100, 0, 0.3), rgba(200, 0, 0, 0.2)), url(/images/background.jpg);
+    /*background: linear-gradient(rgba(0, 100, 0, 0.3), rgba(200, 0, 0, 0.2)), url(/images/background.jpg);*/
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    background-color: #464646;
+    background-color: lightgray;
     padding-top: 15px;
 }
 
 
 .navbar {
-    background: rgb(247,110,240);
-    background: linear-gradient(333deg, rgba(247,110,240,1) 0%, rgba(115,29,253,1) 46%, rgba(107,70,233,1) 56%, rgba(69,252,145,1) 100%);
-    background-color: #89CFF0;
+    /*background: rgb(247,110,240);*/
+    /*background: linear-gradient(333deg, rgba(247,110,240,1) 0%, rgba(115,29,253,1) 46%, rgba(107,70,233,1) 56%, rgba(69,252,145,1) 100%);*/
+    background-color: darkgray;
     text-decoration: none;
 }
 
 .navbar a {
-    color: #FAED26;
+    color: white;
     text-shadow: 0 0 3px #46344E;
     text-decoration: none;
 }
@@ -44,7 +44,7 @@ body {
     font-size: 25px;
     border:none;
     cursor: pointer;
-    color: #FAED26;
+    color: white;
     margin:0;
     padding:0;
 }
@@ -52,7 +52,7 @@ body {
 .logoutbtn:hover{
     /*margin: auto;*/
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
-    background: #4e555b;
+    background: #89CFF0;
     font-size: 25px;
     background:none;
     border:none;
@@ -67,7 +67,7 @@ body {
 }
 
 .nav-item i {
-    color: #FAED26;
+    color: white;
 }
 
 .nav-item i:hover {
@@ -76,7 +76,7 @@ body {
 
 .zaglavie {
     /*font-family: 'Dancing Script', cursive;*/
-    color: #FAED26;
+    color: white;
     font-style: italic;
     text-shadow: 2px 2px #46344E;
     font-size: 38px;
@@ -160,8 +160,8 @@ td, th {
 }
 
 form.main-form {
-    background: rgb(137,207,240);
-    background: linear-gradient(135deg, rgba(137,207,240,1) 0%, rgba(255,186,210,1) 77%);
+    background: darkgray;
+    /*background: linear-gradient(135deg, rgba(137,207,240,1) 0%, rgba(255,186,210,1) 77%);*/
     padding:10px 30px;
     border-radius: 20px;
 }
@@ -480,7 +480,7 @@ figure:hover img {
     margin:0;
     padding:0;
     cursor: pointer;
-    color: #FAED26;
+    color: white;
 }
 
 .navbar-toggler:hover {

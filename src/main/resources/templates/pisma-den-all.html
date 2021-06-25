@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons :: head"></head>
+
+<body>
+    <header th:replace="fragments/commons :: navigation"></header>
+
+
+    <div class="containertop" >
+        <h2 class="text-center zaglavie">Всички писма</h2>
+
+
+        <div class=" row d-flex justify-content-center">
+
+            <div class="col-xs-2 m-1 text-center" >
+                <label for="ex1" class="h5 mb-2">Номер писмо</label>
+                <input id="ex1" name="dataName" onkeyup="myFunction()" />
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="main" style="overflow:auto;">
+
+        <!--    todo spacer-->
+        <!-- Authors -->
+        <table  id="example"  >
+            <thead >
+            <tr>
+                <th>Номер</th>
+                <th>Дата писмо</th>
+                <th>Дата анализ</th>
+                <th>Номер писмо</th>
+                <th>Добави анализ</th>
+<!--                <th>Gender</th>-->
+<!--                <th>Price</th>-->
+<!--                <th>Birthday</th>-->
+<!--                <th>Add new code</th>-->
+<!--                <th sec:authorize="hasRole('ADMIN')" >del btn</th>-->
+            </tr>
+            </thead>
+
+            <tbody class="authors-container">
+            <tr th:each="p, stat : ${allPisma}" th:object="${p}"  >
+                <td scope="row" th:text="${stat.index + 1 }">1</td>
+                <td th:text="*{pismoDate}" >Дата писмо</td>
+                <td th:text="*{analizDate}" >Дата анализ</td>
+                <td th:text="*{numberPismo}" >Номер писмо</td>
+                <td>
+                    <!--  <form th:action="@{/cart/addTo/{id}/(id=*{id})}" th:method="POST">  -->
+                    <form  th:action="@{/den/allAnalizByPismo/{id}/(id = ${p.id} )}" th:method="Get">
+                        <input type="submit" value="Виж анализи" class="btn btn-danger" >
+                    </form>
+                </td>
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+
+    </div>
+    <script>
+        function myFunction() {
+            // Declare variables
+
+            var table, tr, i, input1, input2,input7, filter1, filter2, filter7, td1, td2, td7, txtValue1, txtValue2, txtValue7;
+            // var genderFilter = document.getElementById("genders").value;
+            input1 = document.getElementById("ex1");
+
+            filter1 = input1.value.toUpperCase();
+
+            table = document.getElementById("example");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td1 = tr[i].getElementsByTagName("td")[3];
+
+                if (td1) {
+                    txtValue1 = td1.textContent || td1.innerText;
+
+                    if ((txtValue1.toUpperCase().indexOf(filter1) > -1)   ){
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+
+        }
+    </script>
+
+
+</body>
+</html>
