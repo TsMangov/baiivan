@@ -1,1 +1,1 @@
-web: java -jar build/libs/name-version.jar
+web: java -jar build/libs/deploytest-0.0.1-SNAPSHOT.jar
