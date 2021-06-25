@@ -75,7 +75,7 @@
         <h2 class="text-center zaglavie">Add new PET</h2>
         <div class="spacer"></div>
         <form method="POST"
-              th:action="@{/den/addNewAnalizToPismoDenWithId/{id}/(id=${PismoDenid})}"
+              th:action="@{/den/addNewAnalizToPismoDenWithId/{id}/(id=${PismoDen.id})}"
               th:object="${analizDenBindingModel}"
               class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center"  enctype="multipart/form-data">
             <div class="row">
