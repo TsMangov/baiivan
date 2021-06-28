@@ -17,6 +17,7 @@ public class AnalizDenServiceModel {
     private String analizText;
     private boolean isDeleted;
     private Long pismoDen;
+    private String creatorByUsername;
 
     public AnalizDenServiceModel() {
     }
@@ -117,6 +118,15 @@ public class AnalizDenServiceModel {
 
     public AnalizDenServiceModel setPismoDen(Long pismoDen) {
         this.pismoDen = pismoDen;
+        return this;
+    }
+
+    public String getCreatorByUsername() {
+        return creatorByUsername;
+    }
+
+    public AnalizDenServiceModel setCreatorByUsername(String creatorByUsername) {
+        this.creatorByUsername = creatorByUsername;
         return this;
     }
 }

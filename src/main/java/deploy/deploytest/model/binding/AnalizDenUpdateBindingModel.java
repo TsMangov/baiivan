@@ -1,15 +1,11 @@
 package deploy.deploytest.model.binding;
 
-import deploy.deploytest.model.entities.PismoDen;
-
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class AnalizDenBindingModel {
+public class AnalizDenUpdateBindingModel {
+    private Long id;
     @NotBlank(message = "Въведете номер на анализ.")
     @Size(min = 1, max = 60, message = "Номер на анализ трябва да е между 1 и 60 символа.")
     private String numberAnaliz;
@@ -32,17 +28,26 @@ public class AnalizDenBindingModel {
 
     private String analizText;
     private String creatorByUsername;
-
     private boolean isDeleted;
+    private Long pismoDenId;
 
-    public AnalizDenBindingModel() {
+    public AnalizDenUpdateBindingModel() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public AnalizDenUpdateBindingModel setId(Long id) {
+        this.id = id;
+        return this;
     }
 
     public String getNumberAnaliz() {
         return numberAnaliz;
     }
 
-    public AnalizDenBindingModel setNumberAnaliz(String numberAnaliz) {
+    public AnalizDenUpdateBindingModel setNumberAnaliz(String numberAnaliz) {
         this.numberAnaliz = numberAnaliz;
         return this;
     }
@@ -51,7 +56,7 @@ public class AnalizDenBindingModel {
         return analizType;
     }
 
-    public AnalizDenBindingModel setAnalizType(String analizType) {
+    public AnalizDenUpdateBindingModel setAnalizType(String analizType) {
         this.analizType = analizType;
         return this;
     }
@@ -60,7 +65,7 @@ public class AnalizDenBindingModel {
         return ph;
     }
 
-    public AnalizDenBindingModel setPh(Double ph) {
+    public AnalizDenUpdateBindingModel setPh(Double ph) {
         this.ph = ph;
         return this;
     }
@@ -69,7 +74,7 @@ public class AnalizDenBindingModel {
         return cu;
     }
 
-    public AnalizDenBindingModel setCu(Double cu) {
+    public AnalizDenUpdateBindingModel setCu(Double cu) {
         this.cu = cu;
         return this;
     }
@@ -78,7 +83,7 @@ public class AnalizDenBindingModel {
         return mn;
     }
 
-    public AnalizDenBindingModel setMn(Double mn) {
+    public AnalizDenUpdateBindingModel setMn(Double mn) {
         this.mn = mn;
         return this;
     }
@@ -87,7 +92,7 @@ public class AnalizDenBindingModel {
         return fe;
     }
 
-    public AnalizDenBindingModel setFe(Double fe) {
+    public AnalizDenUpdateBindingModel setFe(Double fe) {
         this.fe = fe;
         return this;
     }
@@ -96,7 +101,7 @@ public class AnalizDenBindingModel {
         return so4;
     }
 
-    public AnalizDenBindingModel setSo4(Double so4) {
+    public AnalizDenUpdateBindingModel setSo4(Double so4) {
         this.so4 = so4;
         return this;
     }
@@ -105,7 +110,7 @@ public class AnalizDenBindingModel {
         return ca;
     }
 
-    public AnalizDenBindingModel setCa(Double ca) {
+    public AnalizDenUpdateBindingModel setCa(Double ca) {
         this.ca = ca;
         return this;
     }
@@ -114,17 +119,8 @@ public class AnalizDenBindingModel {
         return analizText;
     }
 
-    public AnalizDenBindingModel setAnalizText(String analizText) {
+    public AnalizDenUpdateBindingModel setAnalizText(String analizText) {
         this.analizText = analizText;
-        return this;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public AnalizDenBindingModel setDeleted(boolean deleted) {
-        isDeleted = deleted;
         return this;
     }
 
@@ -132,8 +128,26 @@ public class AnalizDenBindingModel {
         return creatorByUsername;
     }
 
-    public AnalizDenBindingModel setCreatorByUsername(String creatorByUsername) {
+    public AnalizDenUpdateBindingModel setCreatorByUsername(String creatorByUsername) {
         this.creatorByUsername = creatorByUsername;
+        return this;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public AnalizDenUpdateBindingModel setDeleted(boolean deleted) {
+        isDeleted = deleted;
+        return this;
+    }
+
+    public Long getPismoDenId() {
+        return pismoDenId;
+    }
+
+    public AnalizDenUpdateBindingModel setPismoDenId(Long pismoDenId) {
+        this.pismoDenId = pismoDenId;
         return this;
     }
 }

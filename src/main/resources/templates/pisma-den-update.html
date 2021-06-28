@@ -11,11 +11,11 @@
 
 <div class="spacer"></div>
 <div class="container-original">
-    <h2 class="text-center zaglavie">Добави ново Писмо</h2>
+    <h2 class="text-center zaglavie">Редакция на писмо</h2>
     <div class="spacer"></div>
     <form method="POST"
-          th:action="@{/den/addPisma}"
-          th:object="${pismoDenBindingModel}"
+          th:action="@{/den/pismo-den-update/{id}(id=${pismoDenUpdateBindingModel.id})}"
+          th:object="${pismoDenUpdateBindingModel}"
           class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center"  enctype="multipart/form-data">
           <div class="row">
                 <div class="form-group col mb-3">
@@ -71,6 +71,8 @@
         </div>
     </form>
 </div>
+
+
 
 <div>
     <footer th:replace="fragments/commons :: footer"></footer>

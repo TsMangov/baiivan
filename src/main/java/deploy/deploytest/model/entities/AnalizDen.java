@@ -30,6 +30,8 @@ public class AnalizDen extends BaseEntity{
     private boolean isDeleted;
     @ManyToOne
     private PismoDen pismoDen;
+    @ManyToOne
+    private UserEntity userCreator;
 
     public AnalizDen() {
     }
@@ -130,6 +132,15 @@ public class AnalizDen extends BaseEntity{
 
     public AnalizDen setPismoDen(PismoDen pismoDen) {
         this.pismoDen = pismoDen;
+        return this;
+    }
+
+    public UserEntity getUserCreator() {
+        return userCreator;
+    }
+
+    public AnalizDen setUserCreator(UserEntity userCreator) {
+        this.userCreator = userCreator;
         return this;
     }
 }

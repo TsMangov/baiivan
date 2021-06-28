@@ -40,7 +40,7 @@
 <!--                <th>Price</th>-->
 <!--                <th>Birthday</th>-->
 <!--                <th>Add new code</th>-->
-<!--                <th sec:authorize="hasRole('ADMIN')" >del btn</th>-->
+                <th sec:authorize="hasRole('ADMIN')" >Промени</th>
             </tr>
             </thead>
 
@@ -54,6 +54,12 @@
                     <!--  <form th:action="@{/cart/addTo/{id}/(id=*{id})}" th:method="POST">  -->
                     <form  th:action="@{/den/allAnalizByPismo/{id}/(id = ${p.id} )}" th:method="Get">
                         <input type="submit" value="Виж анализи" class="btn btn-danger" >
+                    </form>
+                </td>
+                <td sec:authorize="hasRole('ADMIN')">
+                    <!--  <form th:action="@{/cart/addTo/{id}/(id=*{id})}" th:method="POST">  -->
+                    <form  th:action="@{/den/pismo-den-update/{id}/(id = ${p.id} )}" th:method="Get">
+                        <input type="submit" value="Редакция" class="btn btn-danger" >
                     </form>
                 </td>
             </tbody>

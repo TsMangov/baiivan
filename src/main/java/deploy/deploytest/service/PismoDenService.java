@@ -1,5 +1,6 @@
 package deploy.deploytest.service;
 
+import deploy.deploytest.model.binding.PismoDenUpdateBindingModel;
 import deploy.deploytest.model.entities.PismoDen;
 import deploy.deploytest.model.service.PismoDenServiceModel;
 import deploy.deploytest.model.viewModels.PismoDenViewModel;
@@ -17,4 +18,6 @@ public interface PismoDenService {
 
     //todo with view
     PismoDenViewModel findById(Long pismoDenid);
+
+    boolean updatePismoDen(PismoDenUpdateBindingModel pismoDenUpdateBindingModel);
 }

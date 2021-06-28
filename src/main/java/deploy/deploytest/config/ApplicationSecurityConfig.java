@@ -37,6 +37,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
             // protect all other pages
             antMatchers("/**").authenticated().
             antMatchers("/users/register").hasAnyRole("ADMIN").
+            //todo forbid admin pages for users like redakciite i loga
             and().
           // configure login with HTML form
           formLogin().

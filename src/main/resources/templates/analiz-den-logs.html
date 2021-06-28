@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments/commons :: head"></head>
+
+<body>
+    <header th:replace="fragments/commons :: navigation"></header>
+
+
+    <div class="containertop" >
+        <h2 class="text-center zaglavie" th:text="'Лог на промените по анализ ' ">ААА </h2>
+    </div>
+    <div class="main" style="overflow:auto;">
+
+        <!--    todo spacer-->
+        <!-- Authors -->
+        <table  id="example"  >
+            <thead >
+            <tr>
+                <th>Номер</th>
+                <th>Анализ</th>
+                <th>Тип</th>
+                <th>Писмо</th>
+                <th>Дата</th>
+                <th>Текст</th>
+                <th>Потребител</th>
+
+            </tr>
+            </thead>
+
+            <tbody class="authors-container">
+            <tr th:each="c, stat : ${AllStatusLogs}" th:object="${c}"  >
+                <td scope="row" th:text="${stat.index + 1 }">1</td>
+                <td th:text="*{numberAnaliz}" >Дата писмо</td>
+                <td th:text="*{analizType}" >Дата анализ</td>
+                <td th:text="*{pismoDenNumber}" >Дата анализ</td>
+                <td th:text="*{statusChangeDateAndTime}" >Дата анализ</td>
+                <td th:text="*{statusChangeText}" >Дата анализ</td>
+                <td th:text="*{usernameMadeTheChange}" >Дата анализ</td>
+
+            </tbody>
+        </table>
+        <br/>
+        <br/>
+    </div>
+
+
+</body>
+</html>

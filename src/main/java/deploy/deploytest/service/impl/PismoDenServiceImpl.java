@@ -1,5 +1,6 @@
 package deploy.deploytest.service.impl;
 
+import deploy.deploytest.model.binding.PismoDenUpdateBindingModel;
 import deploy.deploytest.model.entities.PismoDen;
 import deploy.deploytest.model.service.PismoDenServiceModel;
 import deploy.deploytest.model.viewModels.PismoDenViewModel;
@@ -68,5 +69,23 @@ public class PismoDenServiceImpl implements PismoDenService {
         formattedString = pismo.getPismoDate().format(formatter);
         pismoDenViewModel.setPismoDate(formattedString);
         return pismoDenViewModel;
+    }
+
+    @Override
+    public boolean updatePismoDen(PismoDenUpdateBindingModel pismoDenUpdateBindingModel) {
+       try {
+           //todo way to handle null return
+           PismoDen pismoDen = this.pismoDenRepository.findById(pismoDenUpdateBindingModel.getId()).orElse(null);
+           assert pismoDen != null;
+           pismoDen.setAnalizDate(pismoDenUpdateBindingModel.getAnalizDate());
+           pismoDen.setNumberPismo(pismoDenUpdateBindingModel.getNumberPismo());
+           pismoDen.setPismoDate(pismoDenUpdateBindingModel.getPismoDate());
+           this.pismoDenRepository.save(pismoDen);
+
+       }catch (Exception e){
+           return false;
+       }
+       return true;
+
     }
 }

@@ -9,85 +9,29 @@
     <header th:replace="fragments/commons :: navigation"></header>
 
 
-    <div class="containertop" >
-        <h2 class="text-center zaglavie" th:text="'Всички анализи за писмо - ' + ${PismoDen.numberPismo} + ' с дата писмо '+${PismoDen.pismoDate} +' и дата анализ '+ ${PismoDen.analizDate}" >Всички анализа за писмо + </h2>
+<!--    <div class="containertop" >-->
+<!--        <h2 class="text-center zaglavie" th:text="'Всички анализи за писмо номер - ' + ${PismoDen.numberPismo} + ' с дата писмо '+${PismoDen.pismoDate} +' и дата анализ '+ ${PismoDen.analizDate}" >Всички анализа за писмо + </h2>-->
 
 
-        <div class=" row d-flex justify-content-center">
+<!--        <div class=" row d-flex justify-content-center">-->
 
-            <div class="col-xs-2 m-1 text-center" >
-                <label for="ex1" class="h5 mb-2">Номер анализ</label>
-                <input id="ex1" name="dataName" onkeyup="myFunction()" />
-            </div>
+<!--            <div class="col-xs-2 m-1 text-center" >-->
+<!--                <label for="ex1" class="h5 mb-2">Номер анализ</label>-->
+<!--                <input id="ex1" name="dataName" onkeyup="myFunction()" />-->
+<!--            </div>-->
 
-        </div>
-    </div>
-
-
-    <div class="main" style="overflow:auto;">
-
-        <!--    todo spacer-->
-        <!-- Authors -->
-        <table  id="example"  >
-            <thead >
-            <tr>
-                <th>Номер</th>
-                <th>Анализ</th>
-                <th>Тип</th>
-                <th>Ph</th>
-                <th>Cu mg/l</th>
-                <th>Mn mg/l</th>
-                <th>Fe mg/l</th>
-                <th>SO4 mg/l</th>
-                <th>Ca mg/l</th>
-                <th>Статус</th>
-               <th sec:authorize="hasRole('ADMIN')" >Изтриване</th>
-               <th sec:authorize="hasRole('ADMIN')" >Промяна</th>
-                <th sec:authorize="hasRole('ADMIN')" >Логове</th>
-            </tr>
-            </thead>
-
-            <tbody class="authors-container">
-            <tr th:each="p, stat : ${allAnalizByChosenId}" th:object="${p}"  >
-                <td scope="row" th:text="${stat.index + 1 }">1</td>
-                <td th:text="*{numberAnaliz}" >Дата писмо</td>
-                <td th:text="*{analizType}" >Дата анализ</td>
-                <td th:text="*{ph}" >Дата анализ</td>
-                <td th:text="*{cu}" >Дата анализ</td>
-                <td th:text="*{mn}" >Дата анализ</td>
-                <td th:text="*{fe}" >Дата анализ</td>
-                <td th:text="*{so4}" >Дата анализ</td>
-                <td th:text="*{ca}" >Дата анализ</td>
-                <td th:text="*{isDeleted()} ? 'изтрит' : 'активен'" > status</td>
-
-                <td sec:authorize="hasRole('ADMIN')">
-                    <form th:action="@{/den/delAnalizDen/{id}(id=*{id} )}" th:method="Post">
-                        <input type="submit" value="Изтрий" class="btn btn-danger" >
-                    </form>
-                </td>
-                <td sec:authorize="hasRole('ADMIN')">
-                    <form th:action="@{/den/updateAnalizDen/{id}(id=*{id} )}" th:method="Get">
-                        <input type="submit" value="Промени" class="btn btn-danger" >
-                    </form>
-                </td>
-                <td sec:authorize="hasRole('ADMIN')">
-                    <form th:action="@{/den/AnalizDenStatusLogs/{id}(id=*{id} )}" th:method="Get">
-                        <input type="submit" value="Лог" class="btn btn-danger" >
-                    </form>
-                </td>
-            </tbody>
-        </table>
-        <br/>
-        <br/>
-
-    </div>
+<!--        </div>-->
+<!--    </div>-->
 
     <div class="container-original">
-        <h2 class="text-center zaglavie">Add new PET</h2>
+        <div class="spacer"></div>
+        <h2 class="text-center zaglavie">Промени Анализ</h2>
+        <h2 class="text-center zaglavie" th:text=" ${PismoDen.numberPismo} + ' с дата писмо '+${PismoDen.pismoDate} +' и дата анализ '+ ${PismoDen.analizDate}" >Всички анализа за писмо + </h2>
+
         <div class="spacer"></div>
         <form method="POST"
-              th:action="@{/den/addNewAnalizToPismoDenWithId/{id}/(id=${PismoDen.id})}"
-              th:object="${analizDenBindingModel}"
+              th:action="@{/den/updateAnalizDen/{id}/(id=${analizDenUpdateBindingModel.id})}"
+              th:object="${analizDenUpdateBindingModel}"
               class="main-form mx-auto col-md-8 d-flex flex-column justify-content-center"  enctype="multipart/form-data">
             <div class="row">
                 <div class="form-group col mb-3">
@@ -118,6 +62,8 @@
                     <small id="analizTypeError" th:if="${#fields.hasErrors('analizType')}" th:errors="*{analizType}"
                            class="invalid-feedback text-light form-text bg-danger rounded"  >Category name must be between 3 and 60 characters</small>
                 </div>
+            </div>
+            <div class="row">
                 <div class="form-group col mb-3">
                     <label for="ph"
                            class="text-white font-weight-bold">Въведи Ph </label>
@@ -160,6 +106,8 @@
                     <small id="mnError" th:if="${#fields.hasErrors('mn')}" th:errors="*{mn}"
                            class="invalid-feedback text-light form-text bg-danger rounded"  >Category</small>
                 </div>
+            </div>
+            <div class="row">
                 <div class="form-group col mb-3">
                     <label for="fe"
                            class="text-white font-weight-bold">Въведи Fe </label>
